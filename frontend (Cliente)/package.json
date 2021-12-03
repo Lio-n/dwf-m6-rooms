@@ -1,0 +1,15 @@
+{
+  "name": "rooms",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@vaadin/router": "^1.7.4",
+    "firebase": "8.7.1",
+    "lodash": "^4.17.21",
+    "parcel": "^2.0.0-rc.0"
+  },
+  "scripts": {
+    "dev": "parcel serve ./src/index.html"
+  }
+}
