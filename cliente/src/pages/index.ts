@@ -3,17 +3,76 @@ import { state } from "../state";
 import "../components/form/form";
 
 class Home extends HTMLElement {
+  shadow: ShadowRoot;
+  constructor() {
+    super();
+    this.shadow = this.attachShadow({ mode: "open" });
+  }
   connectedCallback() {
     this.render();
-    const form = this.querySelector("form");
+
+    const style = document.createElement("style");
+    style.innerHTML = `*{margin:0;padding:0;box-sizing: border-box; font-family: 'Roboto', sans-serif;}
+      .home__title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+      }
+      .WngRoomId {
+        color: var(--wng-alert);
+        margin-top: 5px;
+      }
+      .remove {
+        display: none;
+      }
+      .open {
+        display: inherit;
+      }
+      .home__form {
+        width: 312px;
+      }
+      input,
+      button {
+        height: 55px;
+        width: 100%;
+        border-radius: 5px;
+      }
+      button {
+        display: inherit;
+        margin-top: 1rem;
+        background-color: var(--btn);
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: var(--btn-hover);
+      }
+      input {
+        margin-top: 5px;
+        padding: 15px;
+        border: solid 1px;
+        font-size: 1rem;
+      }
+      .form__subtitle {
+        margin-top: 13px;
+      }
+      .form__selectOp {
+        height: 55px;
+        width: 100%;
+        font-size: 1rem;
+      }
+      `;
+    this.shadow.appendChild(style);
+
+    const form = this.shadow.querySelector(".home__form");
     // ! Alert Input Empty
     const nombreInput = form["nombre"];
     const emailInput = form["email"];
     const roomIdInput = form["roomId"];
 
-    const wngSelectOp = form.querySelector(".form__roomId");
+    const wngSelectOp = form.querySelector(".WngRoomId");
     const selectOp = form.querySelector(".form__selectOp");
-    const roomId: any = form.querySelector(".ContRoomId");
+    const roomId: any = form.querySelector(".form__roomId");
 
     selectOp.addEventListener("click", (e) => {
       e.preventDefault();
@@ -109,9 +168,10 @@ class Home extends HTMLElement {
     });
   }
   render() {
-    this.innerHTML = `
-      <h1 class="title">Bienvenidos</h1>
-      <form>
+    const div = document.createElement("div");
+    div.innerHTML = `
+      <h1 class="home__title">Bienvenidos</h1>
+      <form class="home__form">
         <h3 class="form__subtitle">Email</h3>
         <input type="text" name="email">
 
@@ -124,15 +184,17 @@ class Home extends HTMLElement {
           <option value="2">Room Existente</option>
         </select>
         
-        <div class="ContRoomId" style="display: none;">
+        <div class="form__roomId" style="display: none;">
           <h3 class="form__subtitle">Room ID</h3>
           <input type="text" name="roomId">
         </div>
-        <h4 class="form__roomId WngRoomId remove">Only Numbers, Example "4513"</h4>
+        <h4 class="WngRoomId remove">Only Numbers, Example "4513"</h4>
         
         <button>Enviar</button>
       </form>
     `;
+
+    this.shadow.appendChild(div);
   }
 }
 

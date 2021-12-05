@@ -16,12 +16,6 @@ customElements.define(
 
       const style = document.createElement("style");
       style.innerHTML = `*{margin:0;padding:0;box-sizing: border-box; font-family: 'Roboto', sans-serif;}
-      .remove{
-        display: none;
-      }
-      .open{
-        display: inherit;
-      }
       .form{
         width: 312px;
       }
@@ -46,10 +40,6 @@ customElements.define(
         padding: 15px;
         border: solid 1px;
       }
-      .form__warning{
-        color: #e60026;
-        margin-top: 5px;
-      }
       .form__label {
         font-size: 24px;
       }
@@ -65,7 +55,6 @@ customElements.define(
             <label class="form__label">${this.label}</label>
           </div>
           <input type="text" name="${this.input}">
-          <h4 class="form__warning remove">Por favor ingresa tu nombre</h4>
           <button>${this.btn}</button>
         </form>
     `;

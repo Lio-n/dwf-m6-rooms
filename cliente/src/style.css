@@ -1,0 +1,28 @@
+:root {
+  --header: #211b55;
+  --name-msg: #a5a5a5;
+  --my-msg: #b9e97c;
+  --another-msg: #d8d8d8;
+  --wng-alert: #211b55;
+  --btn: #9cbbe9;
+  --btn-hover: #a8cbff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+.header {
+  min-height: 73px;
+  height: 10vh;
+  background-color: var(--header);
+}
+.root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}

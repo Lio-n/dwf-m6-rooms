@@ -2,12 +2,14 @@ import { firestore, rtdb } from "./db";
 import * as express from "express";
 import { nanoid } from "nanoid";
 import * as cors from "cors";
+// import "dotenv/config";
 
-const Port = "3000";
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use(express.static("dist"));
+const port = process.env.PORT || 3000;
 const userColl = firestore.collection("users");
 const roomsColl = firestore.collection("rooms");
 
@@ -93,6 +95,7 @@ app.post("/rooms", (req, res) => {
       }
     });
 });
+
 // ! Unirse una ROOM EXISTENTE
 app.get("/rooms/:roomId", (req, res) => {
   const { roomId } = req.params;
@@ -136,6 +139,11 @@ app.post("/messages/:msgId", (req, res) => {
     }
   });
 });
-app.listen(Port, () => {
-  console.log(`Aplicación ejemplo, escuchando el puerto ${Port}!`);
+
+app.get("*", (req, res) => {
+  res.sendFile(__dirname + "/dist/index.html");
+});
+
+app.listen(port, () => {
+  console.log(`Run server on port ${port}`);
 });

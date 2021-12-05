@@ -1,0 +1,29 @@
+{
+  "name": "rooms",
+  "version": "1.0.0",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@vaadin/router": "^1.7.4",
+    "firebase": "8.7.1",
+    "lodash": "^4.17.21",
+    "parcel": "^2.0.0-rc.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "firebase-admin": "^10.0.0",
+    "nanoid": "^3.1.30",
+    "nodemon": "^2.0.15",
+    "@types/node": "^16.11.11",
+    "dotenv": "^10.0.0",
+    "typescript": "^4.5.2"
+  },
+  "scripts": {
+    "dev:front": "parcel serve ./cliente/src/index.html",
+    "build:front": "parcel build ./cliente/src/index.html",
+    "dev": "nodemon --watch './server/index.ts' --exec 'ts-node ./server/index.ts'",
+    "test": "ava",
+    "build:api": "tsc",
+    "build": "yarn build:front && yarn build:api",
+    "start": "node ./server/index.js"
+  }
+}

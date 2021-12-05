@@ -1,5 +1,6 @@
 import * as admin from "firebase-admin"; //Libreria
-import * as serviceAccount from "./key.json"; //Key
+// import * as serviceAccount from "./key.json"; //Key
+const serviceAccount = require("./key.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as any), //Autentifico con mi key "serviceAccount"

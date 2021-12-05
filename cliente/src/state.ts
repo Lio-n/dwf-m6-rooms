@@ -1,6 +1,5 @@
 import { rtdb } from "./rtdb";
 import map from "lodash/map";
-import { Router } from "@vaadin/router";
 
 const API_BASE_URL = "http://localhost:3000";
 let i = 0;
@@ -20,9 +19,8 @@ const state = {
       cs.roomId = roomId;
       cs.rtdbRoomId = rtdbRoomId;
       this.setState(cs);
-      Router.go("/chat");
 
-      this.listenRoom();
+      state.listenRoom();
     }
   },
   listenRoom() {
@@ -140,12 +138,11 @@ const state = {
   },
   setState(newState) {
     this.data = newState;
-    console.log(this.data);
     for (const cd of this.listeners) {
       cd();
     }
     localStorage.setItem("saved-state", JSON.stringify(newState)); // ! Guarda la DATA en el LocalStorage
-    console.log(`Soy el State he cambiado ${i++}`, this.data);
+    console.log(`Soy el State he cambiado ${i++}`);
   },
   subscribe(callback: (any) => any) {
     this.listeners.push(callback);
