@@ -5,7 +5,8 @@
 - [Overview](#overview)
   - [The challenge](#the-challenge)
 - [My process](#my-process)
-  - [Built with](#Built-with)
+  - [Built with](#built-with)
+  - [API Documentation](#api-documentation)
   - [Useful resources](#useful-resources)
 
 ## Overview
@@ -26,6 +27,11 @@
 - DB NoSQL (Firestore)
 - ExpressJS
 - Flexbox
+
+### API Documentation
+
+ - I made a documentation of my api using postman
+ - [Rooms API](https://documenter.getpostman.com/view/17951846/UVJkBtCf)
 
 ### Useful resources
 
