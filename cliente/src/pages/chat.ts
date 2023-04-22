@@ -21,10 +21,11 @@ class ChatPage extends HTMLElement {
   }
   messages: Message[] = [];
   addListener() {
-    const div = this.shadow.querySelector("div");
-    const shadowRoot = div.querySelector("custom-form").shadowRoot;
-    const form = shadowRoot.querySelector(".form");
-    const input = form.querySelector("input");
+    const div = this.shadow.querySelector("div") as HTMLDivElement;
+    const formElement = div.querySelector("custom-form") as Element;
+    const shadowRoot = formElement.shadowRoot as ShadowRoot;
+    const form = shadowRoot.querySelector(".form") as Element;
+    const input = form.querySelector("input") as Element;
 
     input.setAttribute("placeholder", "Enviar Mensage..");
     form.addEventListener("submit", (e) => {
@@ -85,9 +86,7 @@ class ChatPage extends HTMLElement {
             .map((m) => {
               return `<div class="message ${m.from == fullName ? "myMsg" : "anotherMsg"}">
                         <span class="anotherMsg">${m.from == fullName ? "" : m.from}</span>
-                        <span class="user__message ${
-                          m.from == fullName ? "myUser" : "anotherUser"
-                        }">${m.msg}</span>
+                        <span class="user__message ${m.from == fullName ? "myUser" : "anotherUser"}">${m.msg}</span>
                       </div>`;
             })
             .join("")}

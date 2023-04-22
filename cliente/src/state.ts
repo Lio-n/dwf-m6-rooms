@@ -1,14 +1,13 @@
 import { rtdb } from "./rtdb";
 import map from "lodash/map";
 
-const API_BASE_URL = "https://dwf-m6-rooms.herokuapp.com";
 let i = 0;
 const state = {
   data: { email: "", fullName: "", userId: "", roomId: "", rtdbRoomId: "", messages: [] },
   listeners: [],
   init() {
     const lastStorageState = localStorage.getItem("saved-state");
-    const data = JSON.parse(lastStorageState);
+    const data = JSON.parse(lastStorageState as string);
     if (data !== null) {
       const { email, fullName, userId, roomId, rtdbRoomId } = data;
 
@@ -41,7 +40,7 @@ const state = {
     const cs = this.getState();
     const { rtdbRoomId, fullName } = cs;
 
-    fetch(`${API_BASE_URL}/messages/${rtdbRoomId}`, {
+    fetch(`/messages/${rtdbRoomId}`, {
       method: "post",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({ from: fullName, msg: message }),
@@ -56,7 +55,7 @@ const state = {
   signUp(callBack?) {
     const cs = this.getState();
     if (cs.email && cs.fullName) {
-      fetch(`${API_BASE_URL}/signup`, {
+      fetch(`/signup`, {
         method: "post",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ email: cs.email, nombre: cs.fullName }),
@@ -78,7 +77,7 @@ const state = {
   authUser(callBack?) {
     const cs = this.getState();
     if (cs.email) {
-      fetch(`${API_BASE_URL}/auth`, {
+      fetch(`/auth`, {
         method: "post",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ email: cs.email }),
@@ -100,7 +99,7 @@ const state = {
   askNewRoom(callBack?) {
     const cs = this.getState();
     if (cs.userId) {
-      fetch(`${API_BASE_URL}/rooms`, {
+      fetch(`/rooms`, {
         method: "post",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ userId: cs.userId }),
@@ -122,7 +121,7 @@ const state = {
     const cs = this.getState();
     const { roomId, userId } = cs;
     if (userId && roomId) {
-      fetch(`${API_BASE_URL}/rooms/${roomId}?userId=${userId}`)
+      fetch(`/rooms/${roomId}?userId=${userId}`)
         .then((res) => {
           return res.json();
         })

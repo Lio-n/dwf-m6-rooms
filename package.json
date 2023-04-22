@@ -1,29 +1,30 @@
 {
-  "name": "rooms",
+  "name": "chat_rooms",
   "version": "1.0.0",
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
+    "@types/node": "^16.11.11",
     "@vaadin/router": "^1.7.4",
-    "firebase": "8.7.1",
-    "lodash": "^4.17.21",
-    "parcel": "^2.0.0-rc.0",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
-    "firebase-admin": "^10.0.0",
+    "firebase": "^8.7.1",
+    "firebase-admin": "^11.7.0",
+    "lodash": "^4.17.21",
     "nanoid": "^3.1.30",
     "nodemon": "^2.0.15",
-    "@types/node": "^16.11.11",
-    "dotenv": "^10.0.0",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "vite": "^4.3.1"
   },
   "scripts": {
-    "dev:front": "parcel serve ./cliente/src/index.html",
-    "build:front": "parcel build ./cliente/src/index.html",
     "dev": "nodemon --watch './server/index.ts' --exec 'ts-node ./server/index.ts'",
-    "test": "ava",
-    "build:api": "tsc",
-    "build": "yarn build:front && yarn build:api",
-    "start": "node ./server/index.js"
+    "build": "npm run build:front && npm run build:api",
+    "start": "node ./dist-server/index.js",
+    "build:front": "vite build ./cliente/src --outDir=../../dist-client",
+    "build:api": "tsc"
+  },
+  "devDependencies": {
+    "process": "^0.11.10"
   }
 }

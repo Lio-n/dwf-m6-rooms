@@ -64,15 +64,15 @@ class Home extends HTMLElement {
       `;
     this.shadow.appendChild(style);
 
-    const form = this.shadow.querySelector(".home__form");
+    const form = this.shadow.querySelector(".home__form") as Element;
     // ! Alert Input Empty
     const nombreInput = form["nombre"];
     const emailInput = form["email"];
     const roomIdInput = form["roomId"];
 
-    const wngSelectOp = form.querySelector(".WngRoomId");
-    const selectOp = form.querySelector(".form__selectOp");
-    const roomId: any = form.querySelector(".form__roomId");
+    const wngSelectOp = form.querySelector(".WngRoomId") as Element;
+    const selectOp = form.querySelector(".form__selectOp") as Element;
+    const roomId: any = form.querySelector(".form__roomId") as Element;
 
     selectOp.addEventListener("click", (e) => {
       e.preventDefault();
@@ -99,15 +99,9 @@ class Home extends HTMLElement {
       // ! Alert Input Empty
       let menu = false;
       if (!menu) {
-        nombre.value == "" || null
-          ? (nombreInput.style.border = "3px solid #e60026")
-          : nombreInput.style.removeProperty("border");
-        email.value == "" || null
-          ? (emailInput.style.border = "3px solid #e60026")
-          : emailInput.style.removeProperty("border");
-        roomIdInput.value == "" || null
-          ? (roomIdInput.style.border = "3px solid #e60026")
-          : roomIdInput.style.removeProperty("border");
+        nombre.value == "" || null ? (nombreInput.style.border = "3px solid #e60026") : nombreInput.style.removeProperty("border");
+        email.value == "" || null ? (emailInput.style.border = "3px solid #e60026") : emailInput.style.removeProperty("border");
+        roomIdInput.value == "" || null ? (roomIdInput.style.border = "3px solid #e60026") : roomIdInput.style.removeProperty("border");
         menu = true;
       }
 

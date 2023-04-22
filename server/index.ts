@@ -1,14 +1,14 @@
+import "dotenv/config";
 import { firestore, rtdb } from "./db";
 import * as express from "express";
 import { nanoid } from "nanoid";
 import * as cors from "cors";
-// import "dotenv/config";
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(express.static("dist"));
+app.use(express.static("dist-client"));
 const port = process.env.PORT || 3000;
 const userColl = firestore.collection("users");
 const roomsColl = firestore.collection("rooms");
@@ -141,7 +141,7 @@ app.post("/messages/:msgId", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-  res.sendFile(__dirname + "/dist/index.html");
+  res.sendFile(__dirname + "/dist-client/index.html");
 });
 
 app.listen(port, () => {

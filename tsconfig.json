@@ -3,7 +3,9 @@
     "target": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "outDir": "./dist-server"
   },
-  "files": ["./server/index.ts"]
+  "files": ["./server/index.ts"],
+  "exclude": ["./node_modules"]
 }
