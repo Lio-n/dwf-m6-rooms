@@ -5,9 +5,6 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [],
-  "env": {},
-  "dev": {},
   "scripts": {
     "build": "npm run build && node ./dist-server/index.js"
   }
