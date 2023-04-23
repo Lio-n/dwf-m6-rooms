@@ -1,4 +1,5 @@
-dist
+dist-client
+dist-server
 build
 .parcel-cache
 node_modules
